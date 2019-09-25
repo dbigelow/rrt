@@ -2,7 +2,7 @@
 ## Introduction
 The rapidly-exploring random trees (RRT) algorithm is a probabilistic method of searching a space. At a high level, given a starting point (the root node of your tree), a map of your space, and an goal point, the RRT algorithm is as follows:
 
-```
+<pre>
 Given starting point <b>s</b>, ending point <b>e</b>, map space <b>M</b>, undirected graph <b>T</b>
 Add <b>s</b> as the root node of <b>T</b>
 While no path <b>s</b>-><b>e</b> exists in <b>T</b>
@@ -16,4 +16,4 @@ While no path <b>s</b>-><b>e</b> exists in <b>T</b>
         Attempt to add an edge <b>x</b>-><b>e</b>
         If success:
             Finished
-```
+</pre>
