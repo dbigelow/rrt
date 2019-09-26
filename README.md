@@ -17,3 +17,14 @@ While no path <b>s</b>-><b>e</b> exists in <b>T</b>
         If success:
             Finished
 </pre>
+
+## Walkthrough
+
+![Step 0](/doc/img/RRT_example_0.png)
+![Step 1](/doc/img/RRT_example_1.png)
+![Step 2](/doc/img/RRT_example_2.png)
+![Step 3](/doc/img/RRT_example_3.png)
+![Step 4](/doc/img/RRT_example_4.png)
+![Step 5](/doc/img/RRT_example_5.png)
+![Step 6](/doc/img/RRT_example_6.png)
+![Step 7](/doc/img/RRT_example_7.png)
