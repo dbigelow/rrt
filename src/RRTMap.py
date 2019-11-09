@@ -22,7 +22,6 @@ class MapDisplay:
 		cv2.imshow("map",blank_image)
 		cv2.waitKey(0) # waits until a key is pressed
 		cv2.destroyAllWindows() # destroys the window showing image
-
 class Node:
 	def __init__(self, label, x, y):
 		self.label = label
@@ -51,7 +50,7 @@ class Graph:
 		self.graph[node] = []
 		return node
 
-	def addEdge(self, node_from, node_to)
+	def addEdge(self, node_from, node_to):
 		self.graph[node_from].append(node_to)
 
 mapDisplay = MapDisplay([[(100,100),(100,200)],[(300,300),(100,100)]])
