@@ -24,16 +24,35 @@ class MapDisplay:
 		cv2.destroyAllWindows() # destroys the window showing image
 
 class Node:
-	def __init__(self, name, x, y):
-		self.name = name
+	def __init__(self, label, x, y):
+		self.label = label
 		self.x = x
 		self.y = y
 
 
+
+
+
+class Graph:
+	def __init__(self):
+		
+		self.graph = {}
+		self.largest_label = -1 
+
+	def addNode(self, x, y):
+		for existing_node in self.graph.keys():
+			if existing_node.x == x and existing_node.y == y:
+				raise Exception("Node already exists")
+		
+		largest_label += 1
+		label = largest_label
+		node = Node(label, x, y)
+		self.graph.append(node)
+		self.graph[node] = []
+		return node
+
+	def addEdge(self, node_from, node_to)
+		self.graph[node_from].append(node_to)
+
 mapDisplay = MapDisplay([[(100,100),(100,200)],[(300,300),(100,100)]])
-
-
-tree = {}
-
-
 mapDisplay.drawMap()
