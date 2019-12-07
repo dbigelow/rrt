@@ -36,6 +36,8 @@ class MapDisplay:
 			print(p2)
 			cv2.line(blank_image, p1, p2, (0,255,0), 1)
 		return blank_image
+
+
 class Node:
 	def __init__(self, label, x, y):
 		self.label = label
@@ -66,18 +68,3 @@ class Graph:
 	def addEdge(self, node_from, node_to):
 		self.graph[node_from].append(node_to)
 
-
-
-mapDisplay = MapDisplay([[(100,100),(100,200)],[(300,300),(100,100)]])
-mapDisplay.drawMap()
-
-
-graph = Graph()
-node1 = graph.addNode(240, 240)
-node2 = graph.addNode(250, 250)
-node3 = graph.addNode(220, 250)
-
-graph.addEdge(node1, node2)
-graph.addEdge(node1, node3)
-
-mapDisplay.drawGraph(graph)
