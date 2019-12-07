@@ -4,3 +4,5 @@
 
 /.vs/slnx.sqlite
 /.vs/rrt/v16/.suo
+/.vs
+/src/__pycache__
