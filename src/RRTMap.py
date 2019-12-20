@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 
 class MapDisplay:
-    """A generic blackjack player"""
 
     def __init__(self, map, width=500, height=500):
         self.map = map
@@ -34,13 +33,16 @@ class MapDisplay:
             p2 = i[1]
             print(p1)
             print(p2)
-            cv2.line(blank_image, p1, p2, (0,255,0), 1)
+            cv2.line(blank_image, (p1.x,p1.y), (p2.x,p2.y), (0,255,0), 1)
         return blank_image
 
 class Node:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
+    def nodeDistance(self, other) -> float:
+        return np.sqrt((self.x - other.x) ** 2 + (self.y - other.y) ** 2)
 
 class Graph:
     def __init__(self):
