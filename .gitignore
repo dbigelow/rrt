@@ -6,3 +6,4 @@
 /.vs/rrt/v16/.suo
 /.vs
 /src/__pycache__
+*.pyc

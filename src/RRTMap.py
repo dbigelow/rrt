@@ -1,6 +1,13 @@
 import cv2
 import numpy as np
 
+class Colors:
+    RED = (255, 0, 0)
+    BLUE = (0, 0, 255)
+    GREEN = (0, 255, 0)
+    BLACK = (0, 0, 0)
+    WHITE = (255, 255, 255)
+
 class MapDisplay:
 
     def __init__(self, map, width=500, height=500):
@@ -16,25 +23,29 @@ class MapDisplay:
 
     def drawGraph(self, graph):
         map_image = self.loadMap()
+        dotColor = Colors.GREEN
         for node in graph.graph.keys():
-            cv2.circle(map_image, (node.x, node.y), 4, (255, 0, 0), 2)
+            cv2.circle(map_image, (node.x, node.y), 3, dotColor, 3)
+            dotColor = Colors.BLUE
             for node2 in graph.graph[node]:
-                cv2.line(map_image, (node.x, node.y), (node2.x, node2.y), (255,0,0), 1)
+                cv2.line(map_image, (node.x, node.y), (node2.x, node2.y), Colors.BLUE, 1)
         cv2.imshow("map",map_image)
         cv2.waitKey(0) # waits until a key is pressed
         cv2.destroyAllWindows() # destroys the window showing image
 
     def loadMap(self):
         blank_image = np.zeros((self.height, self.width, 3), np.uint8)
-        blank_image[:,:] = (255,255,255)
-        #print(blank_image)
+        blank_image[:,:] = Colors.WHITE
+
         for i in self.map:
             p1 = i[0]
             p2 = i[1]
-            print(p1)
-            print(p2)
-            cv2.line(blank_image, (p1.x,p1.y), (p2.x,p2.y), (0,255,0), 1)
+            cv2.line(blank_image, (p1.x,p1.y), (p2.x,p2.y), Colors.BLACK, 1)
         return blank_image
+
+    def drawPoint(self, image, point, color):
+        pass
+        # cv2.point()
 
 class Node:
     def __init__(self, x, y):
