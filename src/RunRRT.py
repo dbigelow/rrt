@@ -4,7 +4,15 @@ from RRTMap import Node
 from RRTAlgorithim import RRT
 
 
-mapDisplay = MapDisplay([[Node(100,100),Node(100,200)],[Node(20,200),Node(100,200)],[Node(300,300),Node(100,100)],[Node(300,300),Node(300,400)],[Node(300,400),Node(200,400)]])
+map = [
+	[Node(100,100),Node(100,200)],
+	[Node(20,200),Node(100,200)],
+	[Node(300,300),Node(100,100)],
+	[Node(300,300),Node(300,400)],
+	[Node(300,400),Node(200,400)]
+]
+
+mapDisplay = MapDisplay(map)
 mapDisplay.drawMap()
 node1 = Node(50, 150)
 node2 = Node(125, 175)
