@@ -1,10 +1,10 @@
 import cv2
 import numpy as np
 
-class Colors:
-    RED = (255, 0, 0)
-    BLUE = (0, 0, 255)
+class Colors: #Open cv orders colors as (B,G,R)
+    BLUE = (255, 0, 0)
     GREEN = (0, 255, 0)
+    RED = (0, 0, 255)
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
 
@@ -23,10 +23,10 @@ class MapDisplay:
 
     def drawGraph(self, graph):
         map_image = self.loadMap()
-        dotColor = Colors.GREEN
+        dotColor = Colors.GREEN #Draw start node green
         for node in graph.graph.keys():
             cv2.circle(map_image, (node.x, node.y), 3, dotColor, 3)
-            dotColor = Colors.BLUE
+            dotColor = Colors.BLUE #Draw other nodes blue.
             for node2 in graph.graph[node]:
                 cv2.line(map_image, (node.x, node.y), (node2.x, node2.y), Colors.BLUE, 1)
         cv2.imshow("map",map_image)
