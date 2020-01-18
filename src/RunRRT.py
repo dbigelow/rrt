@@ -10,5 +10,5 @@ node1 = Node(50, 50)
 node2 = Node(250, 450)
 rrt = RRT(node1,node2,mapDisplay)
 while not rrt.explore():
-    rrt.mapDisplay.drawGraph(rrt.Tree)
-rrt.mapDisplay.drawGraph(rrt.Tree)
+    rrt.mapDisplay.drawGraph(rrt.Tree, rrt.end_node)
+rrt.mapDisplay.drawGraph(rrt.Tree, rrt.end_node)

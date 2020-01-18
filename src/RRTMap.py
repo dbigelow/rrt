@@ -1,5 +1,24 @@
 import cv2
 import numpy as np
+from os import system, name 
+if name == 'nt':
+    from msvcrt import getwch
+else:
+    from getch import getch as getwch   
+
+def clear(): 
+  
+    # for windows
+    if name == 'nt': 
+        _ = system('cls') 
+  
+    # for mac and linux(here, os.name is 'posix')
+    else: 
+        _ = system('clear') 
+
+#ghetto logging:
+log_level = "ERROR"
+
 
 class Colors: #Open cv orders colors as (B,G,R)
     BLUE = (255, 0, 0)
@@ -21,14 +40,25 @@ class MapDisplay:
         cv2.waitKey(0) # waits until a key is pressed
         cv2.destroyAllWindows() # destroys the window showing image
 
-    def drawGraph(self, graph):
+    def drawGraph(self, graph, goalNode = None):
+        if log_level == "DEBUG":
+            clear()
         map_image = self.loadMap()
-        dotColor = Colors.GREEN #Draw start node green
+
+
+        #draw starting node green
+        nodeColor = Colors.GREEN #self.drawPoint(map_image, graph.graph.keys()[0], Colors.GREEN)
+
         for node in graph.graph.keys():
-            cv2.circle(map_image, (node.x, node.y), 3, dotColor, 3)
-            dotColor = Colors.BLUE #Draw other nodes blue.
+            map_image = self.drawPoint(map_image, node, nodeColor)
+            nodeColor = Colors.BLUE #draw remaining nodes blue
+
             for node2 in graph.graph[node]:
                 cv2.line(map_image, (node.x, node.y), (node2.x, node2.y), Colors.BLUE, 1)
+
+        #Draw the goal node
+        map_image = self.drawPoint(map_image, goalNode, Colors.RED)
+
         cv2.imshow("map",map_image)
         cv2.waitKey(0) # waits until a key is pressed
         cv2.destroyAllWindows() # destroys the window showing image
@@ -43,9 +73,13 @@ class MapDisplay:
             cv2.line(blank_image, (p1.x,p1.y), (p2.x,p2.y), Colors.BLACK, 1)
         return blank_image
 
-    def drawPoint(self, image, point, color):
-        pass
-        # cv2.point()
+
+    def drawPoint(self, image, node, color):
+        if(node):
+            if log_level == "DEBUG":
+                print("Drawing " + str(color) + " node")
+            cv2.circle(image, (node.x, node.y), 2, color, 2)
+        return image
 
 class Node:
     def __init__(self, x, y):
