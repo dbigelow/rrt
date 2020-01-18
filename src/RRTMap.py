@@ -33,12 +33,13 @@ class MapDisplay:
         self.map = map
         self.width = width
         self.height = height
+        cv2.namedWindow("map", cv2.WINDOW_NORMAL)
+        cv2.resizeWindow("map", width, height)
 
     def drawMap(self):
         blank_image = self.loadMap()
         cv2.imshow("map",blank_image)
         cv2.waitKey(0) # waits until a key is pressed
-        cv2.destroyAllWindows() # destroys the window showing image
 
     def drawGraph(self, graph, goalNode = None):
         if log_level == "DEBUG":
@@ -61,7 +62,7 @@ class MapDisplay:
 
         cv2.imshow("map",map_image)
         cv2.waitKey(0) # waits until a key is pressed
-        cv2.destroyAllWindows() # destroys the window showing image
+       
 
     def loadMap(self):
         blank_image = np.zeros((self.height, self.width, 3), np.uint8)
